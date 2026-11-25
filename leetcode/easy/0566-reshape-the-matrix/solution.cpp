@@ -1,0 +1,20 @@
+class Solution {
+public:
+    vector<vector<int>> matrixReshape(vector<vector<int>>& mat, int r, int c) {
+        int m = mat.size();
+        int n = mat[0].size();
+        
+        if (m * n != r * c) {
+            return mat;
+        }
+        
+        vector<vector<int>> res(r, vector<int>(c));
+        int total = m * n;
+        
+        for (int idx = 0; idx < total; ++idx) {
+            res[idx / c][idx % c] = mat[idx / n][idx % n];
+        }
+        
+        return res;
+    }
+};
